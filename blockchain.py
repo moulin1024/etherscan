@@ -163,5 +163,7 @@ def guess_time_zones(address):
     transaction_freq, bin_edges = np.histogram(df_hours['Hour'], bins=24, range=(0, 24))
 
     time_zones, probabilities = calculate_time_zone_probability(transaction_freq)
-    return time_zones, probabilities
+
+    guessed_timezone = time_zones[np.argmax(probabilities)]
+    return guessed_timezone
 
